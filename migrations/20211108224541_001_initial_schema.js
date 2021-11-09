@@ -1,21 +1,17 @@
 
 exports.up = async function(knex) {
-  await knex.raw(`CREATE TYPE beer_type AS ENUM ('stout', 'ipa', 'ale', 'lager')`)
-
   await knex.raw(`
-    CREATE TABLE beer(
+    CREATE TABLE butterfly(
       id serial NOT NULL,
       name text UNIQUE NOT NULL,
-      manufacturer text NOT NULL,
-      type beer_type NOT NULL,
+      species text NOT NULL,
+      link text NOT NULL,
       image_url text NOT NULL,
-      description text NOT NULL,
-      abv float NOT NULL,
       CONSTRAINT pk_beer PRIMARY KEY (id)
     )
   `)
 };
 
 exports.down = async function(knex) {
-  await knex.raw(`DELETE TABLE beer`)
+  await knex.raw(`DELETE TABLE butterfly`)
 };

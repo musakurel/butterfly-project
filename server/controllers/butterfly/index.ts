@@ -1,16 +1,16 @@
 import express from 'express'
 import knex from '../../db'
-import { Beer } from './types'
+import { Butterfly } from './types'
 
 const router: express.Router = new (express.Router as any)()
 
 router.get('/', async (req, res) => {
-  const beers = await knex('beer')
-    .select<Beer[]>('*')
+  const butterflies = await knex('butterfly')
+    .select<Butterfly[]>('*')
 
   res
     .status(200)
-    .json(beers)
+    .json(butterflies)
 })
 
 export { router };

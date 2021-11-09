@@ -1,118 +1,103 @@
-# 🦋 Butterfly critique
+# 🦋 Butterfly app
 
-Butterfly critique is an API designed for butterfly enthusiasts. So far, it's an [`express`](https://expressjs.com/)-based API that stores butterflies and users.
+Butterly app is an app that allows you to view butterflies!
 
-Data persistence is through a JSON-powered database called [`lowdb`](https://github.com/typicode/lowdb).
+It consists of 2 parts:
+- **backend** *(REST API built via express)*
+- **frontend** *(SPA built via React)*
 
-Validation is built using an assertion library called [`@mapbox/fusspot`](https://github.com/mapbox/fusspot).
+Project is written on **Typescript**
 
-## Task
+## Backend
 
-Butterfly critique is already a pretty great API, but we think it would be even better if it let users critique butterflies. Your task is to create new API endpoints that:
+Backend is an REST API server that based on top o ExpressJS framework.
+For database we use Postgres.
+As DB client we use Knex query builder (https://knexjs.org/)
+All code related to the backend is placed in `server` folder.
+For now REST API provides single endpoint:
+```
+GET /butterfiles
+```
+It returns list of butterfiles (check butterfly schema in `server/controllers/butterfly/types.ts`)
 
-1. Allow a user to rate butterflies on a scale of 0 through 5
-1. Allow retrieval of a list of a user's rated butterflies, sorted by rating
+## Frontend
 
-You should also provide a small **write-up** that explains the decisions (for instance, the HTTP verbs for new endpoints) and trade-offs you made. If you add any new dependencies, spend some time talking about why you chose them.
+Frontend is an SPA built on top of React.
+For routing we use `react-router-dom` lib.
+All code related to the frontend is placed in `fe` folder.
 
-You are free to refactor or improve any code you think should be refactored, but please include a note about such changes in your write-up. Any changes you make should be scoped and explained as though you are opening a pull request against an existing codebase used in a production API service.
+## Setup
 
-If you have any questions or concerns, please do not hesitate to contact us!
-
-### What we're looking for
-
-* Your code should be extensible and reusable
-* Your code should be well tested
-* Your code should be tidy and adhere to conventions
-* Your changes should be well-scoped and explained in the write-up
-* Your write-up should be thoughtful and coherent
-
-❗️ Note: please do not write your name anywhere in your solution, since this prevents us from evaluating it anonymously.
-
-### Scoring rubric
-
-You will be scored on the following aspects of your work:
-
-* Endpoint implementation
-* Endpoint design
-* Appropriate testing of new code
-* Tidiness and adherence to conventions
-* Appropriate refactoring
-* Communication in the write-up
-
-0 = poor 1 = adequate 2 = exceptional
-
-The maximum possible score is 12.
-
-## Developing
-
-### Requirements
-
-* Node v14.x
-* npm v6
-
-### Setup
-
-Install dependencies with:
-
+**1. Install dependencies**
 ```sh
 npm install
 ```
 
-If you need to recreate the butterflies database, you can run:
-
+**2. Create database** (for that you need `docker` and `docker-compose` to be installed on your machine)
 ```sh
-npm run init-db
+npm run db:init
+```
+Command above will spin up postgres docker image on your machine (for more details check `server/docker-compose.yaml`), apply migrations from `migrations` folder and apply seeds from `seeds` folder
+
+**3. Run server**
+```sh
+npm run server:dev
+```
+Command above will build server source code and run it via nodemon.
+Nodemon listen for changes in `server` folder (for mre details check `nodemon.json`)
+
+**4. Run frontend**
+```sh
+npm run fe:dev
+```
+Command above will run frontend app via `webpack-dev-server` and it will be available on `http://localhost:3000`
+
+## Task
+
+Current app is very primitive, it's only allows you to view butterflies
+We want to have ability to **create/delete** butterfiles
+### Requirements
+1. Add endpoint to the server `POST /butterfiles/create`
+  It should validate provided payload and throw corresponded error if validation didn't pass.
+  If payload is correct it should try to add new record to the database.
+2. Implement butterfly upsert form on the frontend. It should be available on `http://localhost:3000/create`
+3. Add endpoint to the server `DELETE /butterfiles/:id`
+  It should check that butterfly with provided ID exists.
+  Delete butterfly with provided ID.
+4. Add **delete** button to the butterfly card.
+  When button is clicked it should ask user confirmation.
+
+### Bonus task
+Implement **wishlist** functionality 
+Add ability to add butterfiles to the wishlist and then view wishlist on the sepparate page, e.g: `http://localhost:3000/wishlist`
+
+
+## Development
+Both backend and frontend are built and running in development mode
+To run them both you can launch backend/frontend servers on the separate terminals
+In the first terminal run server `npm run server:dev`. In the second terminal run frontend `nnpm run fe:dev`
+
+If you want add new DB migration run next command:
+```sh
+npm run db:migrate:create [migration_name]
+```
+It will generate new migration template in `migrations` folder
+To apply migrations run:
+```sh
+npm run db:migrate:up
 ```
 
-### Running
-
-To run the application locally:
-
+To add new seeds file run next command:
 ```sh
-npm start
+npm run db:seed:create [seed_name]
+```
+It will generate new seeds template in `seeds` folder
+To apply seeds run:
+```sh
+npm run db:seed:run
 ```
 
-You should see a message that the application has started:
-
-```sh
-Butterfly API started at http://localhost:8000
-```
-
-You can manually try out the application using `curl`:
-
-```sh
-# GET a butterfly
-curl http://localhost:8000/butterflies/xRKSdjkBt4
-
-# POST a new butterfly
-curl -X POST -d '{"commonName":"Brimstone", "species":"Gonepteryx rhamni", "article":"https://en.wikipedia.org/wiki/Gonepteryx_rhamni"}' -H 'content-type: application/json' http://localhost:8000/butterflies
-
-# GET a user
-curl http://localhost:8000/users/OOWzUaHLsK
-```
-
-**For developing**, you can run the application with auto-restarts on code changes using:
-
-```sh
-npm run watch
-```
-
-### Testing
-
-This project uses [`jest`](https://jestjs.io/) as its testing framework.
-If you are unfamiliar with `jest`, check out its [documentation](https://jestjs.io/docs/en/getting-started).
-
-This project has `eslint` and a custom config [`@mapbox/eslint-config-mapbox`](https://www.npmjs.com/package/@mapbox/eslint-config-mapbox) setup for code linting.
-
-To run the linter and all tests:
-
-```sh
-npm test
-```
-
-**For developing**, you can run `jest` with auto-restarts using:
-
-```sh
-npm run test-watch
-```
+## Notes
+In general you can use any technology/tool that you want.
+E.g CSS pre/post processors, state managers, query-builders/ORM ...etc
+If you want to change existing code - please do :) 

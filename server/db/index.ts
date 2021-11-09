@@ -7,7 +7,7 @@ export default knex({
     port: 5432,
     user: 'user',
     password: '1234',
-    database: 'beers'
+    database: 'db'
   },
   debug: false,
   pool: {

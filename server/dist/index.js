@@ -25,11 +25,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var body_parser_1 = __importDefault(require("body-parser"));
 var cookie_parser_1 = __importDefault(require("cookie-parser"));
-var BeerController = __importStar(require("./controllers/beer"));
+var ButterflyController = __importStar(require("./controllers/butterfly"));
 var app = (0, express_1.default)();
 app.use(body_parser_1.default.json({ limit: '10mb' }));
 app.use(body_parser_1.default.text({ type: 'application/x-www-form-urlencoded' }));
 app.use((0, cookie_parser_1.default)());
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE,OPTIONS');
+    // Set custom headers for CORS
+    res.header('Access-Control-Allow-Headers', "Content-type,Accept,x-token,Cookie,timestamp");
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
+    return next();
+});
 app.get('/', function (req, res) {
     res
         .status(200)
@@ -37,7 +47,7 @@ app.get('/', function (req, res) {
         message: 'kkk'
     });
 });
-app.use('/beer', BeerController.router);
+app.use('/butterflies', ButterflyController.router);
 app.use(function (req, res) {
     res
         .status(404)

@@ -5,8 +5,8 @@ import {
   Route
 } from "react-router-dom";
 import Navigation from './components/Navigation'
-import BeerList from './components/Beer/List'
-import CreateBeer from './components/Beer/Create'
+import ButterfliesList from './components/Butterfly/List'
+import CreateButterfly from './components/Butterfly/Create'
 
 import './app.css';
 
@@ -16,8 +16,8 @@ export default () => <Router>
     </header>
     <main>
       <Routes>
-        <Route path="beers" element={<BeerList/>}/>
-        <Route path="create" element={<CreateBeer/>}/>
+        <Route path="butterflies" element={<ButterfliesList/>}/>
+        <Route path="create" element={<CreateButterfly/>}/>
       </Routes>
     </main>
 </Router>

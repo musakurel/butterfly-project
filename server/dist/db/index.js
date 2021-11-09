@@ -11,7 +11,7 @@ exports.default = (0, knex_1.default)({
         port: 5432,
         user: 'user',
         password: '1234',
-        database: 'beers'
+        database: 'db'
     },
     debug: false,
     pool: {
