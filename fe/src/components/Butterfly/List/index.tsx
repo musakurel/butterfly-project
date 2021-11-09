@@ -4,7 +4,7 @@ import ButterflyCard from '../Card'
 
 const styles = require('./list.css').default
 
-const BeerList = () => {
+const ButterflyList = () => {
   const [butterflies, setButterflies] = useState<Butterfly[]>([])
 
   useEffect(() => {
@@ -24,4 +24,4 @@ const BeerList = () => {
   </div>
 }
 
-export default BeerList
+export default ButterflyList

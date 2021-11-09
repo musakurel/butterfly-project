@@ -1,5 +1,5 @@
 import React from 'react'
 
-const CreateBeer = () => <p>Implement me!</p>
+const CreateButterfly = () => <p>Implement me!</p>
 
-export default CreateBeer
+export default CreateButterfly
