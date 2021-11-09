@@ -60,6 +60,13 @@ Current app is very primitive, it's only allows you to view butterflies. We want
 ### Bonus task
 Implement **wishlist** functionality. Add ability to add butterfiles to the wishlist and then view wishlist on the sepparate page, e.g: `http://localhost:3000/wishlist`
 
+### What we're looking for
+* Your code should be extensible and reusable
+* Your code should be tidy and adhere to conventions
+* Your changes should be well-scoped and explained in the write-up
+* Your write-up should be thoughtful and coherent
+
+❗️ If you have any questions or concerns, please do not hesitate to contact us!
 
 ## Development
 Both backend and frontend are built and running in development mode. To run them both you can launch backend/frontend servers on the separate terminals. In the first terminal run server `npm run server:dev`. In the second terminal run frontend `nnpm run fe:dev`
