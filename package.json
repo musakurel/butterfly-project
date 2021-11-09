@@ -20,14 +20,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mapbox/butterfly-api-homework.git"
+    "url": "git+https://github.com/findify/hiring-fullstack-at-home-task.git"
   },
   "author": "findify",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/mapbox/butterfly-api-homework/issues"
+    "url": "https://github.com/findify/hiring-fullstack-at-home-task/issues"
   },
-  "homepage": "https://github.com/mapbox/butterfly-api-homework#readme",
+  "homepage": "https://github.com/findify/hiring-fullstack-at-home-task#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
