@@ -1,25 +1,63 @@
 # 🦋 Butterfly app
 
-Butterly app is an app that allows you to view butterflies!
+The Butterly app is an app that allows you to view butterflies!
 
 It consists of 2 parts:
 - **backend** *(REST API built via express)*
 - **frontend** *(SPA built via React)*
 
-Project is written on **Typescript**
+The project is written in **Typescript**
 
 ## Backend
 
-Backend is an REST API server that based on top o ExpressJS framework. For database we use Postgres. As DB client we use Knex query builder (https://knexjs.org/). All code related to the backend is placed in `server` folder.<br/>
-For now REST API provides single endpoint:
+The backend is a n ExpressJS REST API server. 
+For the database we use Postgres. To talk to the database, we use [Knex](https://knexjs.org/) query builder. All code related to the backend is located in the `server` folder.<br/>
+
+The REST API provides a single endpoint:
 ```
 GET /butterfiles
 ```
-It returns list of butterfiles (check butterfly schema in `server/controllers/butterfly/types.ts`)
+It returns a list of butterfiles (check the butterfly schema in `server/controllers/butterfly/types.ts`)
 
 ## Frontend
 
-Frontend is an SPA built on top of React. For routing we use `react-router-dom` lib. All code related to the frontend is placed in `fe` folder.
+Frontend is an SPA built on top of React. For routing we use `react-router-dom` lib. All code related to the frontend is located in the `fe` folder.
+
+## Task
+
+The Butterfly app is already a pretty great app, but we think it would be even better if it let users create and delete butterflies. 
+
+Your task is to implement:
+1. An endpoint which receives a new butterfly and stores it in the database.
+2. a form on the frontend for adding a new butterfly to the collection, available somewhere in the UI
+3. An endpoint which deletes the specified Butterfly
+4. A **delete** button on the butterfly card
+
+### Bonus task
+Implement **wishlist** functionality. Add ability to add butterfiles to the wishlist and then view wishlist on a sepparate page.
+
+### What we're looking for
+* Your code should be extensible and reusable
+* Your code should be tidy and adhere to conventions
+* Your changes should be well-scoped and explained in the write-up
+* Your write-up should be thoughtful and coherent
+
+❗️ If you have any questions or concerns, please do not hesitate to contact us!
+
+### Scoring rubric
+
+You will be scored on the following aspects of your work:
+
+* Endpoint implementation
+* Endpoint design
+* Appropriate testing of new code
+* Tidiness and adherence to conventions
+* Appropriate refactoring
+* Communication in the write-up
+
+0 = poor 1 = adequate 2 = exceptional
+
+The maximum possible score is 12.
 
 ## Setup
 
@@ -45,28 +83,6 @@ Command above will build server source code and run it via nodemon. Nodemon list
 npm run fe:dev
 ```
 Command above will run frontend app via `webpack-dev-server` and it will be available on `http://localhost:3000`
-
-## Task
-
-Current app is very primitive, it's only allows you to view butterflies. We want to have ability to **create/delete** butterfiles
-### Requirements
-1. Add endpoint to the server `POST /butterfiles/create`
-  It should validate provided payload and throw corresponded error if validation didn't pass. If payload is correct it should try to add new record to the database.
-2. Implement butterfly upsert form on the frontend. It should be available on `http://localhost:3000/create`
-3. Add endpoint to the server `DELETE /butterfiles/:id`
-  It should check that butterfly with provided ID exists. Delete butterfly with provided ID.
-4. Add **delete** button to the butterfly card. When button is clicked it should ask user confirmation.
-
-### Bonus task
-Implement **wishlist** functionality. Add ability to add butterfiles to the wishlist and then view wishlist on the sepparate page, e.g: `http://localhost:3000/wishlist`
-
-### What we're looking for
-* Your code should be extensible and reusable
-* Your code should be tidy and adhere to conventions
-* Your changes should be well-scoped and explained in the write-up
-* Your write-up should be thoughtful and coherent
-
-❗️ If you have any questions or concerns, please do not hesitate to contact us!
 
 ## Development
 Both backend and frontend are built and running in development mode. To run them both you can launch backend/frontend servers on the separate terminals. In the first terminal run server `npm run server:dev`. In the second terminal run frontend `nnpm run fe:dev`
