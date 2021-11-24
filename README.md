@@ -42,6 +42,10 @@ Implement **wishlist** functionality. Add ability to add butterfiles to the wish
 * Your changes should be well-scoped and explained in the write-up
 * Your write-up should be thoughtful and coherent
 
+You should also provide a small **write-up** that explains the decisions (for instance, the HTTP verbs for new endpoints) and trade-offs you made. If you add any new dependencies, spend some time talking about why you chose them.
+
+You are free to refactor or improve any code you think should be refactored, but please include a note about such changes in your write-up. Any changes you make should be scoped and explained as though you are opening a pull request against an existing codebase used in a production API service.
+
 ❗️ If you have any questions or concerns, please do not hesitate to contact us!
 
 ### Scoring rubric
