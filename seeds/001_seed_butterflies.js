@@ -6,7 +6,7 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex("butterfly").insert([
         {
-          id: 1,
+          id: 110,
           name: "Zebra Swallowtail",
           species: "Protographium marcellus",
           link: "https://en.wikipedia.org/wiki/Protographium_marcellus",
@@ -14,7 +14,7 @@ exports.seed = function (knex) {
             "https://upload.wikimedia.org/wikipedia/commons/e/e5/Zebra_Swallowtail%2C_Megan_McCarty69.jpg",
         },
         {
-          id: 2,
+          id: 111,
           name: "Plum Judy",
           species: "Abisara echerius",
           link: "https://en.wikipedia.org/wiki/Abisara_echerius",
@@ -22,7 +22,7 @@ exports.seed = function (knex) {
             "https://upload.wikimedia.org/wikipedia/commons/c/c7/PlumJudyJavadi.jpg",
         },
         {
-          id: 3,
+          id: 112,
           name: "Red Pierrot",
           species: "Talicada nyseus",
           link: "https://en.wikipedia.org/wiki/Talicada_nyseus",
@@ -30,7 +30,7 @@ exports.seed = function (knex) {
             "https://upload.wikimedia.org/wikipedia/commons/2/24/Red_Pierrot_kollam.resized.JPG",
         },
         {
-          id: 4,
+          id: 113,
           name: "Texan Crescentspot",
           species: "Anthanassa texana",
           link: "https://en.wikipedia.org/wiki/Anthanassa_texana",
@@ -38,7 +38,7 @@ exports.seed = function (knex) {
             "https://upload.wikimedia.org/wikipedia/commons/d/d5/Anthanassa_texana.jpg",
         },
         {
-          id: 5,
+          id: 114,
           name: "Guava Skipper",
           species: "Phocides polybius",
           link: "https://en.wikipedia.org/wiki/Phocides_polybius",
@@ -46,7 +46,7 @@ exports.seed = function (knex) {
             "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Guava_Skipper_%28Phocides_polybius%29_%281%29.jpg/440px-Guava_Skipper_%28Phocides_polybius%29_%281%29.jpg",
         },
         {
-          id: 6,
+          id: 115,
           name: "Mexican Bluewing",
           species: "Myscelia ethusa",
           link: "https://en.wikipedia.org/wiki/Myscelia_ethusa",
@@ -54,9 +54,9 @@ exports.seed = function (knex) {
             "https://upload.wikimedia.org/wikipedia/commons/4/41/Myscelia_ethusa.jpg",
         },
         {
-          id: 7,
+          id: 116,
           name: "Mexican Whitewing",
-          species: "Myscelia ethussa",
+          species: "Myscelia etshussa",
           link: "https://en.wikipedia.org/wiki/Myscelia_ethusa",
           image_url:
             "https://upload.wikimedia.org/wikipedia/commons/4/41/Myscelia_ethusa.jpg",

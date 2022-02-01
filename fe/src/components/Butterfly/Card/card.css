@@ -53,18 +53,19 @@ transition: all 0.6s ease-in-out;
   transition: all 0.5s;
 }
 
-.card_button{
-  border:none;
-padding:20px;
-  background-color: white;
-  color:rgb(76, 145, 149);
-  border-radius:5px;
-cursor: pointer;
-margin:20px;
-z-index: 1;
-box-shadow: 3px 10px 29px 1px rgba(0,0,0,0.56);
-transition: all 0.5s;
-}
+ .card_button{
+  color: white;
+  
+  font-family: "Bakbak One", cursive;
+  padding: 10px 20px;
+  border: white solid 1px;
+  background-color: transparent;
+  }
+  .card_button:hover{
+      color: rgb(76, 145, 149);
+    background-color: white;
+    cursor: pointer;
+  }
 .buttons{
   display: flex;
   flex-direction: row;

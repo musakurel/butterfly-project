@@ -3,10 +3,10 @@ import knex from "../../db";
 import { Butterfly } from "./types";
 
 const router: express.Router = new (express.Router as any)();
-
+// We catch the id which comes from our frontend and
+// delete the butterfly which has that id from the database
 router.delete("/:id", async (req, res) => {
-  
-    knex("butterfly")
+  knex("butterfly")
     .delete()
     .where("id", req.params.id)
     .del()

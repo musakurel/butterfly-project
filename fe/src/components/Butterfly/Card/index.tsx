@@ -5,8 +5,10 @@ import { Butterfly } from "../../../../../server/controllers/butterfly/types";
 const styles = require("./card.css").default;
 
 const ButterflyCard: React.FC<Butterfly> = (props) => {
+  // We use useNavigate for a redirect after method works
   let navigate = useNavigate();
 
+  // Delete a butterfly redirect to butterflies page
   async function deletePost(item: number) {
     await fetch(`http://localhost:8000/butterflies/${item}`, {
       method: "DELETE",
@@ -20,10 +22,8 @@ const ButterflyCard: React.FC<Butterfly> = (props) => {
       <img className={styles.image} src={props.image_url} alt={props.name} />
       <p className={styles.name}>{props.name}</p>
       <p className={styles.species}>{props.species}</p>
-      <p className={styles.id}> {props.id}</p>
       <div className={styles.buttons}>
         <a href={props.link}>
-          
           <button className={styles.card_button}>Open</button>
         </a>
         <button

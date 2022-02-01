@@ -4,18 +4,12 @@ import * as ButterflyController from "./controllers/butterfly/index";
 import * as CreateController from "./controllers/butterfly/create";
 import * as DeleteController from "./controllers/butterfly/delete";
 const bodyParser = require("body-parser");
-const methodOverride = require('method-override');
-
-import knex from "./db";
-import { Butterfly } from "./controllers/butterfly/types";
 
 const app = express();
-// MIDLLEWARES
+// MIDDLEWARES
 app.use(bodyParser.json({ limit: "10mb" }) as any);
-// app.use(bodyParser.text({ type: 'application/x-www-form-urlencoded' }) as any)
 app.use(express.urlencoded());
-app.use(express.json()); // I adDed this line
-app.use(methodOverride('_method'));
+app.use(express.json());
 app.use(cookieParser());
 
 app.use((req, res, next) => {
@@ -38,22 +32,15 @@ app.use((req, res, next) => {
   return next();
 });
 
+// ROUTES
 app.get("/", (req, res) => {
   res.status(200).json({
     message: "kkk",
   });
 });
-// List butterflies
 app.use("/butterflies", ButterflyController.router);
-// Create butterfly
 app.use("/create", CreateController.router);
-
-
-
-// Delete butterfly
 app.use("/butterflies/", DeleteController.router);
-
-
 app.use((req, res) => {
   res.status(404).json({
     message: `There is no method ${req.method} for endpoint: ${req.path}`,

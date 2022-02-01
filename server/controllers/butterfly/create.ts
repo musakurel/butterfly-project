@@ -1,26 +1,25 @@
-import express from 'express'
-import knex from '../../db'
-import { Butterfly } from './types'
+import express from "express";
+import knex from "../../db";
+import { Butterfly } from "./types";
 
-const router: express.Router = new (express.Router as any)()
+const router: express.Router = new (express.Router as any)();
 
-router.post('/', async (req, res) => {
-  const butterflies = await knex('butterfly')
- const name=req.body.name
- const species=req.body.species
- const image_url=req.body.image_url
- const link=req.body.link
- console.log("name:=>",name);
-   // .select<Butterfly[]>('*')
-// insert an object to butterfly table
-console.log("requestbody:", req.body);
-await knex('butterfly').insert({id: 49, name: name, species: species, image_url: image_url, link: link })
- .then(()=>{
-   knex.select().from('butterfly').then(function(butterfly){
-     res.send(butterfly)
-   })
- }) 
- 
-})
+router.post("/", async (req, res) => {
+  const butterflies = await knex("butterfly");
+  // We catch the request which comes from our frontend's create page and insert into the database
+  // After we insert it, we send back the user to butterflies page
+  const { name, species, image_url, link } = req.body;
 
-export { router }; 
+  await knex("butterfly")
+    .insert({ name: name, species: species, image_url: image_url, link: link })
+    .then(() => {
+      knex
+        .select()
+        .from("butterfly")
+        .then(function (butterfly) {
+          res.redirect("http://localhost:3000/butterflies");
+        });
+    });
+});
+
+export { router };

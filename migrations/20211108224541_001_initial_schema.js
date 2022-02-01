@@ -16,7 +16,7 @@ exports.down = async function(knex) {
   await knex.raw(`DELETE TABLE butterfly`)
 }
  */
-
+// I changed the code structure for common usage and to be more readable.
 exports.up = function (knex, Promise) {
   return knex.schema.createTable("butterfly", function (table) {
     table.increments("id").primary();

@@ -1,0 +1,45 @@
+.form {
+  display: flex;
+  flex-direction: column!important;
+  align-items: center;
+  justify-content: center;
+
+}
+
+input {
+    display: flex;
+    width: 400px;
+  margin: 20px;
+  border: none;
+  color: #000000;
+  font-size: 1em;
+  font-weight: 300;
+  padding: 0.9em;
+  border-radius: 5px;
+    border: white solid 1px;
+    font-family: "Bakbak One", cursive;
+
+}
+
+.submit {
+margin-left: 175px;
+width: 100px!important;
+color: white;
+font-family: "Bakbak One", cursive;
+padding: 10px 20px;
+border: white solid 1px;
+background-color: transparent;
+}
+.submit:hover{
+    color: rgb(76, 145, 149);
+  background-color: white;
+  cursor: pointer;
+}
+.header {
+  margin: 40px;
+  color: white;
+  font-family: "Bakbak One", cursive;
+  padding: 20px;
+
+}
+
