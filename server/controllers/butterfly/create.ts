@@ -1,6 +1,5 @@
 import express from "express";
 import knex from "../../db";
-import { Butterfly } from "./types";
 
 const router: express.Router = new (express.Router as any)();
 
