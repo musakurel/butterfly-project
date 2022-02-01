@@ -13,4 +13,19 @@ router.get('/', async (req, res) => {
     .json(butterflies)
 })
 
+
+
+// Single butterfly
+/* router.get('/', async (req, res) => {
+  const butterflies = await knex('butterfly').where({
+    id: '1'
+    
+  })
+    .select<Butterfly[]>('*')
+
+  res
+    .status(200)
+    .json(butterflies)
+}) */
+
 export { router };

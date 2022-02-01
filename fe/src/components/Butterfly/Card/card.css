@@ -1,11 +1,74 @@
 .image {
-  max-width: 100%;
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius:10px;
+  position: relative;
+
+}
+.image:hover{
+
+  opacity: 0.6;
+transition: all 0.6s ease-in-out;
+
+
 }
 
 .name {
   font-weight: bold;
+  margin: 40px 0px;
+  color: white;
+  position: absolute;
+
 }
 
 .species {
   font-style: italic;
+  margin: 15px 0px;
+  color: white;
+  position: absolute;
+}
+.id {
+  font-style: italic;
+  margin: 55px 0px;
+  color: white;
+  position: absolute;
+}
+
+.card{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:#000000;
+  width: 300px;
+  border-radius:15px;
+  overflow: hidden;
+  background: black;
+
+
+}
+
+.card:hover{
+  box-shadow: 3px 0px 29px -11px rgba(0,0,0,0.56);
+  transition: all 0.5s;
+}
+
+.card_button{
+  border:none;
+padding:20px;
+  background-color: white;
+  color:rgb(76, 145, 149);
+  border-radius:5px;
+cursor: pointer;
+margin:20px;
+z-index: 1;
+box-shadow: 3px 10px 29px 1px rgba(0,0,0,0.56);
+transition: all 0.5s;
+}
+.buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  margin:300px;
 }
