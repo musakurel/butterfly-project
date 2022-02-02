@@ -76,7 +76,9 @@ exports.up = function (knex, Promise) {
 ```
   const { name, species, image_url, link } = req.body;
 
-```  // After we insert it, we send back the user to butterflies page
+```  
+
+ After we insert it, we send back the user to butterflies page
 
 ## Delete Controller
 We catch the id which comes from our frontend and 
@@ -85,6 +87,7 @@ delete the butterfly which has that id from the database
 ## DB and Yaml File
 
 I replaced the database information with my own. Docker created a database but the server connection failed and I couldn't resolve the connection error so I created my own.
+
 
 ```
 connection: {
