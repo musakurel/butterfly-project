@@ -9,7 +9,7 @@ const ButterflyCard: React.FC<Butterfly> = (props) => {
   let navigate = useNavigate();
 
   // Delete a butterfly redirect to butterflies page
-  async function deletePost(item: number) {
+  async function deleteButterfly(item: number) {
     await fetch(`http://localhost:8000/butterflies/${item}`, {
       method: "DELETE",
     });
@@ -28,7 +28,7 @@ const ButterflyCard: React.FC<Butterfly> = (props) => {
         </a>
         <button
           className={styles.card_button}
-          onClick={() => deletePost(props.id)}
+          onClick={() => deleteButterfly(props.id)}
         >
           Delete
         </button>

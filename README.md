@@ -1,3 +1,112 @@
+# Butterfly App
+
+## Listing Page
+![listing-page.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643784460422/Ig7X4PTtU.png)
+
+
+## Create Page
+
+
+![create-page.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643784565761/mW4hZGfYW.png)
+
+
+
+# Frontend
+
+## Card Page
+```
+ // We use useNavigate for a redirect after method works
+  let navigate = useNavigate();
+
+  // Delete a butterfly redirect to butterflies page
+  async function deleteButterfly(item: number) {
+    await fetch(`http://localhost:8000/butterflies/${item}`, {
+      method: "DELETE",
+    });
+    navigate("/");
+    navigate("/butterflies");
+  }
+```
+
+
+## Create page
+
+ I created a form page and added input elements
+ We are sendin our request to backend with this form and catch with req.body
+```
+ <form method="POST" action="http://localhost:8000/create">
+
+```
+
+# Backend
+## Migrations file
+
+I changed the code structure for common usage and to be more readable.
+### From This
+```
+exports.up = async function(knex) {
+  await knex.raw(`
+    CREATE TABLE butterfly(
+      id serial NOT NULL,
+      name text UNIQUE NOT NULL,
+      species text NOT NULL,
+      link text NOT NULL,
+      image_url text NOT NULL,
+      CONSTRAINT pk_beer PRIMARY KEY (id)
+    )
+  `)
+}
+```
+### To This
+```
+exports.up = function (knex, Promise) {
+  return knex.schema.createTable("butterfly", function (table) {
+    table.increments("id").primary();
+    table.string("name");
+    table.string("species");
+    table.string("link");
+    table.string("image_url");
+  });
+};
+```
+
+
+## Create Controller
+   We catch the request which comes from our frontend's create page and insert it into the database
+```
+  const { name, species, image_url, link } = req.body;
+
+```  // After we insert it, we send back the user to butterflies page
+
+## Delete Controller
+We catch the id which comes from our frontend and 
+delete the butterfly which has that id from the database
+
+## DB and Yaml File
+
+I replaced the database information with my own. Docker created a database but the server connection failed and I couldn't resolve the connection error so I created my own.
+
+```
+connection: {
+    host: 'localhost',
+    port: 5432,
+    user: 'postgres',
+    password: 'postgres',
+    database: 'postgres'
+  }
+```
+
+
+
+
+
+
+
+
+
+
+
+
 # 🦋 Butterfly app
 
 The Butterly app is an app that allows you to view butterflies!
